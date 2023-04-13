@@ -4,7 +4,7 @@ import requests
 from requests import ReadTimeout
 
 
-def get_mes_barcode(area, operation, start_time, end_time):
+def get_mes_barcode(area, operation, start_time, end_time) -> set:
     """
     从mes上获取一段时间内的所有条码
     :param area: 生产线号：W401/W402

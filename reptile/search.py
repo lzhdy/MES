@@ -1,5 +1,3 @@
-from typing import List, Any
-
 from constant.mes_codes import copy_code, operations
 from modules.db.mysql_conn_session import session
 from modules.tables.models import C301, BatteryMark, C302, C303, C304, C305, C306, C307, C308, C309, C310, C311, C312, \
@@ -551,7 +549,7 @@ def get_c310(barcode):
         c.mark = battery_mark.mark
     if respond:
         for i in respond:
-            for (k, v) in copy_code["308"].items():
+            for (k, v) in copy_code["310"].items():
                 if i["parameterId"] == k:
                     if v == "P001":
                         c.P001 = i["parameterValue"]
@@ -700,7 +698,7 @@ def get_c314(barcode):
         c.mark = battery_mark.mark
     if respond:
         for i in respond:
-            for (k, v) in copy_code["313"].items():
+            for (k, v) in copy_code["314"].items():
                 if i["parameterId"] == k:
                     if v == "P001":
                         c.P001 = i["parameterValue"]
