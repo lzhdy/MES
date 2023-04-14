@@ -1,7 +1,7 @@
 from constant.mes_codes import copy_code, operations
-from modules.db.mysql_conn_session import session
-from modules.tables.models import C301, BatteryMark, C302, C303, C304, C305, C306, C307, C308, C309, C310, C311, C312, \
-    C313, C314, C315
+from db.mysql_conn_session import session
+from tables.models import C301, BatteryMark, C302, C303, C304, C305, C306, C307, C308, C309, C310, C311, C312, \
+    C313, C314, C315, D301, D302, D303, D304, D305, D306, D307, D308, D309, D310, D311, D312, D313, D314, D315
 from reptile.url_request import get_mes_data
 
 
@@ -15,60 +15,159 @@ def save_many(barcodes, operation):
     lists = []
     if operation == operations[0]:
         for barcode in barcodes:
-            lists.append(get_c301(barcode))
+            model = barcode[10:12]
+            if model == "64":
+                lists.append(get_301(barcode, D301()))
+            elif model == "75":
+                lists.append(get_301(barcode, C301()))
+            else:
+                print("Invalid barcode: " + barcode)
     if operation == operations[1]:
         for barcode in barcodes:
-            for i in get_c302(barcode):
-                lists.append(i)
+            model = barcode[10:12]
+            if model == "64":
+                lists: list[D302] = [D302(), D302(), D302(), D302(), D302(), D302(), D302(), D302(), D302(), D302(),
+                                     D302(), D302(), D302(), D302(), D302(), D302(), D302(), D302(), D302(), D302()]
+                for i in get_302(barcode, lists):
+                    lists.append(i)
+            elif model == "75":
+                lists: list[C302] = [C302(), C302(), C302(), C302(), C302(), C302(), C302(), C302(), C302(), C302(),
+                                     C302(), C302(), C302(), C302(), C302(), C302(), C302(), C302(), C302(), C302()]
+                for i in get_302(barcode, lists):
+                    lists.append(i)
+            else:
+                print("Invalid barcode: " + barcode)
     if operation == operations[2]:
         for barcode in barcodes:
-            lists.append(get_c303(barcode))
+            model = barcode[10:12]
+            if model == "64":
+                lists.append(get_303(barcode, D303()))
+            elif model == "75":
+                lists.append(get_303(barcode, C303()))
+            else:
+                print("Invalid barcode: " + barcode)
     if operation == operations[3]:
         for barcode in barcodes:
-            lists.append(get_c304(barcode))
+            model = barcode[10:12]
+            if model == "64":
+                lists.append(get_304(barcode, D304()))
+            elif model == "75":
+                lists.append(get_304(barcode, C304()))
+            else:
+                print("Invalid barcode: " + barcode)
     if operation == operations[4]:
         for barcode in barcodes:
-            lists.append(get_c305(barcode))
+            model = barcode[10:12]
+            if model == "64":
+                lists.append(get_305(barcode, D305()))
+            elif model == "75":
+                lists.append(get_305(barcode, C305()))
+            else:
+                print("Invalid barcode: " + barcode)
     if operation == operations[5]:
         for barcode in barcodes:
-            lists.append(get_c306(barcode))
+            model = barcode[10:12]
+            if model == "64":
+                lists.append(get_306(barcode, D306()))
+            elif model == "75":
+                lists.append(get_306(barcode, C306()))
+            else:
+                print("Invalid barcode: " + barcode)
     if operation == operations[6]:
         for barcode in barcodes:
-            for i in get_c307(barcode):
-                lists.append(i)
+            model = barcode[10:12]
+            if model == "64":
+                lists: list[D307] = [D307(), D307(), D307(), D307(), D307(), D307(), D307(), D307(), D307(), D307(),
+                                     D307(), D307(), D307(), D307(), D307(), D307(), D307(), D307(), D307(), D307()]
+                for i in get_307(barcode, lists):
+                    lists.append(i)
+            elif model == "75":
+                lists: list[C307] = [C307(), C307(), C307(), C307(), C307(), C307(), C307(), C307(), C307(), C307(),
+                                     C307(), C307(), C307(), C307(), C307(), C307(), C307(), C307(), C307(), C307()]
+                for i in get_307(barcode, lists):
+                    lists.append(i)
+            else:
+                print("Invalid barcode: " + barcode)
     if operation == operations[7]:
         for barcode in barcodes:
-            lists.append(get_c308(barcode))
+            model = barcode[10:12]
+            if model == "64":
+                lists.append(get_308(barcode, D308()))
+            elif model == "75":
+                lists.append(get_308(barcode, C308()))
+            else:
+                print("Invalid barcode: " + barcode)
     if operation == operations[8]:
         for barcode in barcodes:
-            lists.append(get_c309(barcode))
+            model = barcode[10:12]
+            if model == "64":
+                lists.append(get_309(barcode, D309()))
+            elif model == "75":
+                lists.append(get_309(barcode, C309()))
+            else:
+                print("Invalid barcode: " + barcode)
     if operation == operations[9]:
         for barcode in barcodes:
-            lists.append(get_c310(barcode))
+            model = barcode[10:12]
+            if model == "64":
+                lists.append(get_310(barcode, D310()))
+            elif model == "75":
+                lists.append(get_310(barcode, C310()))
+            else:
+                print("Invalid barcode: " + barcode)
     if operation == operations[10]:
         for barcode in barcodes:
-            lists.append(get_c311(barcode))
+            model = barcode[10:12]
+            if model == "64":
+                lists.append(get_311(barcode, D311()))
+            elif model == "75":
+                lists.append(get_311(barcode, C311()))
+            else:
+                print("Invalid barcode: " + barcode)
     if operation == operations[11]:
         for barcode in barcodes:
-            lists.append(get_c312(barcode))
+            model = barcode[10:12]
+            if model == "64":
+                lists.append(get_312(barcode, D312()))
+            elif model == "75":
+                lists.append(get_312(barcode, C312()))
+            else:
+                print("Invalid barcode: " + barcode)
     if operation == operations[12]:
         for barcode in barcodes:
-            lists.append(get_c313(barcode))
+            model = barcode[10:12]
+            if model == "64":
+                lists.append(get_313(barcode, D313()))
+            elif model == "75":
+                lists.append(get_313(barcode, C313()))
+            else:
+                print("Invalid barcode: " + barcode)
     if operation == operations[13]:
         for barcode in barcodes:
-            lists.append(get_c314(barcode))
+            model = barcode[10:12]
+            if model == "64":
+                lists.append(get_314(barcode, D314()))
+            elif model == "75":
+                lists.append(get_314(barcode, C314()))
+            else:
+                print("Invalid barcode: " + barcode)
     if operation == operations[14]:
         for barcode in barcodes:
-            lists.append(get_c315(barcode))
+            model = barcode[10:12]
+            if model == "64":
+                lists.append(get_315(barcode, D315()))
+            elif model == "75":
+                lists.append(get_315(barcode, C315()))
+            else:
+                print("Invalid barcode: " + barcode)
 
     session.add_all(lists)
     session.commit()
     session.close()
 
 
-def get_c301(barcode):
+def get_301(barcode, c):
     respond = get_mes_data(barcode, "C170")
-    c = C301()
     c.bar_code = barcode
     c.P007 = barcode[14:17]
     battery_mark = session.query(BatteryMark).filter(BatteryMark.bar_code == barcode).first()
@@ -96,10 +195,8 @@ def get_c301(barcode):
     return c
 
 
-def get_c302(barcode):
+def get_302(barcode, lists):
     respond = get_mes_data(barcode, "C180")
-    lists: list[C302] = [C302(), C302(), C302(), C302(), C302(), C302(), C302(), C302(), C302(), C302(), C302(),
-                         C302(), C302(), C302(), C302(), C302(), C302(), C302(), C302(), C302()]
     battery_mark = session.query(BatteryMark).filter(BatteryMark.bar_code == barcode).first()
     batch = barcode[14:17]
     p001 = ""
@@ -168,9 +265,8 @@ def get_c302(barcode):
     return lists
 
 
-def get_c303(barcode):
+def get_303(barcode, c):
     respond = get_mes_data(barcode, "C190")
-    c = C303()
     c.bar_code = barcode
     c.P006 = barcode[14:17]
     start_date = ""
@@ -201,9 +297,8 @@ def get_c303(barcode):
     return c
 
 
-def get_c304(barcode):
+def get_304(barcode, c):
     respond = get_mes_data(barcode, "C200")
-    c = C304()
     c.bar_code = barcode
     c.P007 = barcode[14:17]
     battery_mark = session.query(BatteryMark).filter(BatteryMark.bar_code == barcode).first()
@@ -231,9 +326,8 @@ def get_c304(barcode):
     return c
 
 
-def get_c305(barcode):
+def get_305(barcode, c):
     respond = get_mes_data(barcode, "C210")
-    c = C305()
     c.bar_code = barcode
     c.P007 = barcode[14:17]
     start_date = ""
@@ -266,9 +360,8 @@ def get_c305(barcode):
     return c
 
 
-def get_c306(barcode):
+def get_306(barcode, c):
     respond = get_mes_data(barcode, "C220")
-    c = C306()
     c.bar_code = barcode
     c.P037 = barcode[14:17]
     battery_mark = session.query(BatteryMark).filter(BatteryMark.bar_code == barcode).first()
@@ -389,10 +482,8 @@ def get_c306(barcode):
     return c
 
 
-def get_c307(barcode):
+def get_307(barcode, lists):
     respond = get_mes_data(barcode, "C230")
-    lists: list[C307] = [C307(), C307(), C307(), C307(), C307(), C307(), C307(), C307(), C307(), C307(), C307(), C307,
-                         C307(), C307(), C307(), C307(), C307(), C307(), C307(), C307()]
     battery_mark = session.query(BatteryMark).filter(BatteryMark.bar_code == barcode).first()
     batch = barcode[14:17]
     p001 = ""
@@ -470,9 +561,8 @@ def get_c307(barcode):
     return lists
 
 
-def get_c308(barcode):
+def get_308(barcode, c):
     respond = get_mes_data(barcode, "C235")
-    c = C308()
     c.bar_code = barcode
     c.P008 = barcode[14:17]
     battery_mark = session.query(BatteryMark).filter(BatteryMark.bar_code == barcode).first()
@@ -502,9 +592,8 @@ def get_c308(barcode):
     return c
 
 
-def get_c309(barcode):
+def get_309(barcode, c):
     respond = get_mes_data(barcode, "C240")
-    c = C309()
     c.bar_code = barcode
     c.P006 = barcode[14:17]
     start_date = ""
@@ -539,9 +628,8 @@ def get_c309(barcode):
     return c
 
 
-def get_c310(barcode):
+def get_310(barcode, c):
     respond = get_mes_data(barcode, "C245")
-    c = C310()
     c.bar_code = barcode
     c.P008 = barcode[14:17]
     battery_mark = session.query(BatteryMark).filter(BatteryMark.bar_code == barcode).first()
@@ -571,9 +659,8 @@ def get_c310(barcode):
     return c
 
 
-def get_c311(barcode):
+def get_311(barcode, c):
     respond = get_mes_data(barcode, "C250")
-    c = C311()
     c.bar_code = barcode
     c.P008 = barcode[14:17]
     start_date = ""
@@ -611,9 +698,8 @@ def get_c311(barcode):
     return c
 
 
-def get_c312(barcode):
+def get_312(barcode, c):
     respond = get_mes_data(barcode, "C255")
-    c = C312()
     c.bar_code = barcode
     c.P008 = barcode[14:17]
     battery_mark = session.query(BatteryMark).filter(BatteryMark.bar_code == barcode).first()
@@ -643,9 +729,8 @@ def get_c312(barcode):
     return c
 
 
-def get_c313(barcode):
+def get_313(barcode, c):
     respond = get_mes_data(barcode, "C260")
-    c = C313()
     c.bar_code = barcode
     c.P009 = barcode[14:17]
     start_date = ""
@@ -686,9 +771,8 @@ def get_c313(barcode):
     return c
 
 
-def get_c314(barcode):
+def get_314(barcode, c):
     respond = get_mes_data(barcode, "C270")
-    c = C314()
     c.bar_code = barcode
     c.P011 = barcode[14:17]
     start_date = ""
@@ -738,9 +822,8 @@ def get_c314(barcode):
     return c
 
 
-def get_c315(barcode):
+def get_315(barcode, c):
     respond = get_mes_data(barcode, "C280")
-    c = C315()
     c.bar_code = barcode
     c.P015 = barcode[14:17]
     start_date = ""

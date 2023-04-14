@@ -5,4 +5,5 @@ if __name__ == '__main__':
     datetime.strptime(value, '%Y-%m-%d %H:%M:%S')
     print(datetime.strptime(value, '%Y-%m-%d %H:%M:%S'))
     bar = "0K3CE002YN64DGD3E1102135"
-    print(bar[14:17])
+    print(len(bar))
+    print(bar[10:12])
